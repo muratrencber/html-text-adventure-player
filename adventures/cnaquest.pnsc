@@ -1,0 +1,68 @@
+<var def="0">hasirem</var>
+
+<PANEL id="confrontation">
+<text>Karşında vahşi bir Can belirdi!</text>
+<option>
+<text>İremi ver</text>
+<id>give_irem</id>
+<transition id="won"></transition>
+<opcondition var-name="hasirem" var-target="1" var-type="EQUAL TO"></opcondition>
+</option>
+<option>
+<text>Etrafına bak</text>
+<id>look_around</id>
+<transition id="found_irem"></transition>
+<opcondition var-name="hasirem" var-target="0" var-type="EQUAL TO"></opcondition>
+</option>
+<option>
+<text>Saldır</text>
+<id>attack</id>
+<transition id="died"></transition>
+</option>
+<option>
+<text>Konuşmaya çalış</text>
+<id>try_to_reason</id>
+<transition id="died"></transition>
+</option>
+</PANEL>
+
+<PANEL id="found_irem">
+<text>Bir irem buldun!</text>
+<option>
+<text>Al</text>
+<id>ok_prompt_for_irem</id>
+<transition id="confrontation"></transition>
+</option>
+<result type="change-variable" name="hasirem" value="1"></result>
+<result type="change-node-text" name="confrontation" value="Vahşi Can hırlıyor..."></result>
+</PANEL>
+
+<PANEL id="died">
+<text>Vahşice öldürüldün!</text>
+<option>
+<text>Yeniden başla</text>
+<id>restart</id>
+<transition id="start"></transition>
+</option>
+</PANEL>
+
+<PANEL id="won">
+<text>Kazandın!</text>
+<option>
+<text>Yeniden başla</text>
+<id>restart</id>
+<transition id="start"></transition>
+</option>
+</PANEL>
+
+<PANEL id="start">
+<text>Yürüyorsun</text>
+<option>
+<text>Devam</text>
+<id>ok_prompt</id>
+<transition id="confrontation"></transition>
+</option>
+<result type="change-variable" name="hasirem" value="0"></result>
+<result type="change-node-text" name="confrontation" value="Karşında vahşi bir Can belirdi!"></result>
+</PANEL>
+

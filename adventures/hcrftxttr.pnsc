@@ -1,0 +1,496 @@
+<var def="0">answeredphone</var>
+<var def="0">hashoes</var>
+<var def="0">haskey</var>
+<var def="0">hasgloves</var>
+
+<PANEL id="start">
+<text>HCRF: Yazılı Macera</text>
+<option>
+<text>BAŞLA</text>
+<id>start_game_button</id>
+<transition id="waking_up"></transition>
+</option>
+<option>
+<text>EMEĞİ GEÇENLER</text>
+<id>credits_button</id>
+<transition id="credits"></transition>
+</option>
+<result type="change-variable" name="answeredphone" value="0"></result>
+<result type="change-variable" name="hashoes" value="0"></result>
+<result type="change-variable" name="haskey" value="0"></result>
+<result type="change-variable" name="hasgloves" value="0"></result>
+</PANEL>
+
+<PANEL id="credits">
+<text>YARATICI:
+MERİÇ BAĞLAYAN,
+
+HTML PORTU / ÇEVİRİ:
+MURAT RENÇBER</text>
+<option>
+<text>GERİ</text>
+<id>credits_back_button</id>
+<transition id="start"></transition>
+</option>
+</PANEL>
+
+<PANEL id="waking_up">
+<text>ALARMIN BERBAT SESİNİN ARDINDAN UYANIYORSUN. İHTİYAR SAATE KÜFÜRLER SAVURUYORSUN VE HER GÜN OLDUĞU GİBİ ONU PARÇALAMAYI DÜŞÜNÜYORSUN. AMA GRAMOFONDAN GÜZEL BİR MÜZİK ÇALMAYA BAŞLIYOR. JAZZ TÜRÜNDE, GÜZEL BİR ŞARKI TÜM KÖTÜ DÜŞÜNCELERİ SİLİP ATIYOR.</text>
+<option>
+<text>PENCEREDEN DIŞARI BAK</text>
+<id>look_out_waking</id>
+<transition id="out_bedroom"></transition>
+</option>
+<option>
+<text>GRAMOFONUN YANINA GİT</text>
+<id>go_to_gramophone</id>
+<transition id="gramophone_bedroom"></transition>
+</option>
+<option>
+<text>YATAK ODASINDAN ÇIK</text>
+<id>exit_bedroom</id>
+<transition id="corridor_first"></transition>
+</option>
+</PANEL>
+
+<PANEL id="out_bedroom">
+<text>ELİNDE SEBZE POŞETLERİYLE YÜRÜYEN BİR İHTİYAR GÖRÜYORSUN. İLGİNÇ BİR ŞEY YOK.</text>
+<option>
+<text>GERİ DÖN</text>
+<id>back_to_bedroom</id>
+<transition id="waking_up"></transition>
+</option>
+</PANEL>
+
+<PANEL id="gramophone_bedroom">
+<text>KULAKLARININ PASI SİLİNİYOR.</text>
+<option>
+<text>GERİ DÖN</text>
+<id>back_to_bedroom</id>
+<transition id="waking_up"></transition>
+</option>
+</PANEL>
+
+<PANEL id="corridor_first">
+<text>İLK KATIN KORİDORUNDASIN. PENCEREDEN GELEN IŞIK HUZMELERİ TÜM MEKANI AYDINLATIYOR. ÜSTÜNDE BİR ŞEYLER OLAN BİR KOMODİN VAR. YUKARI ÇIKAN MERDİVENLERİ GÖRÜYORSUN. AYRICA TAM KARŞINDA ÇIKIŞ KAPISI VAR. KAPININ YANINDA BİR AYAKKABILIK VAR.</text>
+<option>
+<text>YUKARI ÇIK</text>
+<id>go_upstairs</id>
+<transition id="going_upstairs"></transition>
+</option>
+<option>
+<text>KOMODİNE GİT</text>
+<id>go_to_console</id>
+<transition id="console_phone_ringing"><trcondition var-name="answeredphone" var-target="0" var-type="EQUAL TO"></trcondition>
+</transition>
+<transition id="console_wout_phone"><trcondition var-name="answeredphone" var-target="1" var-type="EQUAL TO"></trcondition>
+</transition>
+</option>
+<option>
+<text>ÇIKIŞ KAPISINA GİT</text>
+<id>go_to_exit_door</id>
+<transition id="exit_door_without_keys"><trcondition var-name="haskey" var-target="0" var-type="EQUAL TO"></trcondition>
+</transition>
+<transition id="exit_without_shoes"><trcondition var-name="haskey" var-target="1" var-type="EQUAL TO"></trcondition>
+<trcondition var-name="hashoes" var-target="0" var-type="EQUAL TO"></trcondition>
+</transition>
+<transition id="exit_with_shoes"><trcondition var-name="haskey" var-target="1" var-type="EQUAL TO"></trcondition>
+<trcondition var-name="hashoes" var-target="1" var-type="EQUAL TO"></trcondition>
+</transition>
+</option>
+<option>
+<text>AYAKKABILIĞA GİT</text>
+<id>go_to_shoe_drawer</id>
+<transition id="the_shoe_drawer"></transition>
+</option>
+</PANEL>
+
+<PANEL id="console_phone_ringing">
+<text>TELEFONUN CILIZ BİR SESLE ÇALDIĞINI DUYUYORSUN. AYRICA BİR FOTOĞRAF VE SAKSIDA ÇİRKİN BİR ÇİÇEK GÖRÜYORSUN.</text>
+<option>
+<text>FOTOĞRAFA BAK</text>
+<id>look_at_photo</id>
+</option>
+<option>
+<text>ÇİÇEĞİ KONTROL ET</text>
+<id>look_at_pot</id>
+</option>
+<option>
+<text>TELEFONU AÇ</text>
+<id>answer_phone</id>
+<transition id="answered_telephone"></transition>
+</option>
+<text>GERİ DÖN</text>
+<id>back_to_first_corridor</id>
+<transition id="corridor_first"></transition>
+</option>
+</PANEL>
+
+<PANEL id="console_wout_phone">
+<text>BİR FOTOĞRAF VE ÇİRKİN BİR ÇİÇEK GÖRÜYORSUN.</text>
+<option>
+<text>FOTOĞRAFA BAK</text>
+<id>look_at_photo</id>
+</option>
+<option>
+<text>ÇİÇEĞİ KONTROL ET</text>
+<id>look_at_pot</id>
+</option>
+<text>GERİ DÖN</text>
+<id>back_to_first_corridor</id>
+<transition id="corridor_first"></transition>
+</option>
+</PANEL>
+
+<PANEL id="answered_telephone">
+<text>YETİŞEMİYORSUN. TELEFON DA BÜYÜK BÜYÜKANNENDEN MİRAS KALAN BİR ANTİKA OLDUĞU İÇİN KİMİN ARADIĞINI GÖREMİYORSUN.</text>
+<option>
+<text>GERİ</text>
+<id>back_to_console</id>
+<transition id="console_wout_phone"><trcondition var-name="answeredphone" var-target="1" var-type="EQUAL TO"></trcondition>
+</transition>
+<transition id="console_phone_ringing"><trcondition var-name="answeredphone" var-target="0" var-type="EQUAL TO"></trcondition>
+</transition>
+</option>
+<result type="change-variable" name="answeredphone" value="1"></result>
+</PANEL>
+
+<PANEL id="the_shoe_drawer">
+<text>HEPSİ SANA AİT BİRKAÇ ÇİFT AYAKKABI GÖRÜYORSUN.</text>
+<option>
+<text>BİR ÇİFT AYAKKABI GİY</text>
+<id>put_shoes_on</id>
+<transition id="shoes_put"></transition>
+<result type="change-variable" name="hashoes" value="1"></result>
+</option>
+<option>
+<text>GERİ</text>
+<id>shoe_to_corridor</id>
+<transition id="corridor_first"></transition>
+</option>
+</PANEL>
+
+<PANEL id="shoes_put">
+<text>AYAKKABILARINI GİYDİN. ŞİMDİ NE YAPACAKSIN?</text>
+<option>
+<text>KORİDORA GERİ DÖN</text>
+<id>go_to_corridor_wshoes</id>
+<transition id="force_shoe_off"></transition>
+</option>
+<option>
+<text>ÇIKIŞ KAPISINA GİT</text>
+<id>go_to_exit_door</id>
+<transition id="exit_door_without_keys"><trcondition var-name="haskey" var-target="0" var-type="EQUAL TO"></trcondition>
+</transition>
+<transition id="exit_without_shoes"><trcondition var-name="haskey" var-target="1" var-type="EQUAL TO"></trcondition>
+<trcondition var-name="hashoes" var-target="0" var-type="EQUAL TO"></trcondition>
+</transition>
+<transition id="exit_with_shoes"><trcondition var-name="haskey" var-target="1" var-type="EQUAL TO"></trcondition>
+<trcondition var-name="hashoes" var-target="1" var-type="EQUAL TO"></trcondition>
+</transition>
+</option>
+<result type="change-variable" name="hashoes" value="1"></result>
+</PANEL>
+
+<PANEL id="force_shoe_off">
+<text>AYAKKABILARLA İÇERİ GİREMEZSİN.</text>
+<option>
+<text>AYAKKABILARINI ÇIKAR</text>
+<id>put_off_shoes</id>
+<transition id="corridor_first"></transition>
+<result type="change-variable" name="hashoes" value="0"></result>
+</option>
+</PANEL>
+
+<PANEL id="exit_door_without_keys">
+<text>KAPI KİLİTLİ. İÇERİDEN KİLİTLEDİĞİNİ HATIRLIYORSUN AMA ANAHTARI NEREYE KOYDUĞUNU TAM HATIRLAYAMIYORSUN...</text>
+<option>
+<text>GERİ</text>
+<id>door_to_corridor</id>
+<transition id="corridor_first"><trcondition var-name="hashoes" var-target="0" var-type="EQUAL TO"></trcondition>
+</transition>
+<transition id="force_shoe_off"><trcondition var-name="hashoes" var-target="1" var-type="EQUAL TO"></trcondition>
+</transition>
+</option>
+</PANEL>
+
+<PANEL id="going_upstairs">
+<text>YUKARI ÇIKIYORSUN...</text>
+<option>
+<text></text>
+<id></id>
+<transition id="upstairs"></transition>
+</option>
+</PANEL>
+
+<PANEL id="upstairs">
+<text>İKİNCİ KATTASIN. OTURMA ODASI SOLUNDA, SPOR SALONU SAĞINDA.</text>
+<option>
+<text>OTURMA ODASINA GİT</text>
+<id>upstairs_to_livingroom</id>
+<transition id="living_room"></transition>
+</option>
+<option>
+<text>SPOR SALONUNA GİT</text>
+<id>upstairs_to_gym</id>
+<transition id="gym"></transition>
+</option>
+<option>
+<text>AŞAĞI İN</text>
+<id>to_downstairs</id>
+<transition id="going_downstairs"></transition>
+</option>
+</PANEL>
+
+<PANEL id="going_downstairs">
+<text>AŞAĞI İNİYORSUN...</text>
+<option>
+<text></text>
+<id></id>
+<transition id="corridor_first"></transition>
+</option>
+</PANEL>
+
+<PANEL id="gym">
+<text>SPOR SALONUNA GİRİYORSUN, BOKS TORBASINI VE KÜTÜPHANEYİ GÖRÜYORSUN.</text>
+<option>
+<text>GERİ</text>
+<id>back_to_upstairs</id>
+<transition id="upstairs"></transition>
+</option>
+<option>
+<text>BOKS TORBASINA GİT</text>
+<id>go_to_punching_bag</id>
+<transition id="ask_train"></transition>
+</option>
+<option>
+<text>KÜTÜPHANEYE BAK</text>
+<id>check_library</id>
+<transition id="library_with_interesting"><trcondition var-name="hasgloves" var-target="0" var-type="EQUAL TO"></trcondition>
+</transition>
+<transition id="library"><trcondition var-name="hasgloves" var-target="1" var-type="EQUAL TO"></trcondition>
+</transition>
+</option>
+</PANEL>
+
+<PANEL id="living_room">
+<text>GÜZEL BİR TELEVİZYON, BİR ÇEKMECE VE PENCERE VAR.</text>
+<option>
+<text>GERİ</text>
+<id>back_to_upstairs</id>
+<transition id="upstairs"></transition>
+</option>
+<option>
+<text>TELEVİZYONU AÇ</text>
+<id>turn_on_the_tv</id>
+<transition id="the_tv"></transition>
+</option>
+<option>
+<text>ÇEKMECEYE BAK</text>
+<id>check_the_drawer</id>
+<transition id="found_keys"><trcondition var-name="haskey" var-target="0" var-type="EQUAL TO"></trcondition>
+</transition>
+<transition id="nothing"><trcondition var-name="haskey" var-target="1" var-type="EQUAL TO"></trcondition>
+</transition>
+</option>
+<option>
+<text>PENCEREDEN DIŞARI BAK</text>
+<id>look_out_lroom</id>
+<transition id="out_lroom"></transition>
+</option>
+</PANEL>
+
+<PANEL id="library_with_interesting">
+<text>BİRKAÇ KİTAP, BİR ÇEKMECE VE ÇOK İLGİNÇ BİR ŞEY VAR...</text>
+<option>
+<text>İLGİNÇ ŞEYİ İNCELE</text>
+<id>inspect_thing</id>
+<transition id="found_gloves"></transition>
+</option>
+<option>
+<text>ÇEKMECEYE BAK</text>
+<id>look_inside_drawer</id>
+<transition id="inside_lib_drawer"></transition>
+</option>
+<option>
+<text>KİTAPLARA BAK</text>
+<id>check_books</id>
+<transition id="books_lib"></transition>
+</option>
+<option>
+<text>GERİ</text>
+<id>back_to_gym</id>
+<transition id="gym"></transition>
+</option>
+</PANEL>
+
+<PANEL id="library">
+<text>BİRKAÇ KİTAP VE BİR ÇEKMECE VAR.</text>
+<option>
+<text>ÇEKMECEYE BAK</text>
+<id>look_inside_drawer</id>
+<transition id="inside_lib_drawer"></transition>
+</option>
+<option>
+<text>KİTAPLARA BAK</text>
+<id>check_books</id>
+<transition id="books_lib"></transition>
+</option>
+<option>
+<text>GERİ</text>
+<id>back_to_gym</id>
+<transition id="gym"></transition>
+</option>
+</PANEL>
+
+<PANEL id="inside_lib_drawer">
+<text>BİRKAÇ KABLO VE ESKİ IVIR ZIVIR BULUYORSUN. İLGİNÇ BİR ŞEY YOK.</text>
+<option>
+<text>GERİ</text>
+<id>back_to_library</id>
+<transition id="library"><trcondition var-name="hasgloves" var-target="1" var-type="EQUAL TO"></trcondition>
+</transition>
+<transition id="library_with_interesting"><trcondition var-name="hasgloves" var-target="0" var-type="EQUAL TO"></trcondition>
+</transition>
+</option>
+</PANEL>
+
+<PANEL id="books_lib">
+<text>BİRKAÇ KİTAP VAR. İLGİNÇ DURMUYORLAR, ZATEN OKUMAK İÇİN ZAMANIN DA YOK...</text>
+<option>
+<text>GERİ</text>
+<id>back_to_library</id>
+<transition id="library"><trcondition var-name="hasgloves" var-target="1" var-type="EQUAL TO"></trcondition>
+</transition>
+<transition id="library_with_interesting"><trcondition var-name="hasgloves" var-target="0" var-type="EQUAL TO"></trcondition>
+</transition>
+</option>
+</PANEL>
+
+<PANEL id="found_gloves">
+<text>PARIL PARIL PARLAYAN BİR ÇİFT ELDİVEN.</text>
+<option>
+<text>GERİ</text>
+<id>back_to_library</id>
+<transition id="library"><trcondition var-name="hasgloves" var-target="1" var-type="EQUAL TO"></trcondition>
+</transition>
+<transition id="library_with_interesting"><trcondition var-name="hasgloves" var-target="0" var-type="EQUAL TO"></trcondition>
+</transition>
+</option>
+<option>
+<text>GİY</text>
+<id>put_gloves</id>
+<transition id="library"></transition>
+<result type="change-variable" name="hasgloves" value="1"></result>
+</option>
+</PANEL>
+
+<PANEL id="ask_train">
+<text>SPOR YAPMAK İSTİYOR MUSUN?</text>
+<option>
+<text>EVET</text>
+<id>yes_train</id>
+<transition id="punch_hard"><trcondition var-name="hasgloves" var-target="1" var-type="EQUAL TO"></trcondition>
+</transition>
+<transition id="punch_weak"><trcondition var-name="hasgloves" var-target="0" var-type="EQUAL TO"></trcondition>
+</transition>
+</option>
+<option>
+<text>HAYIR</text>
+<id>no_train</id>
+<transition id="gym"></transition>
+</option>
+</PANEL>
+
+<PANEL id="punch_weak">
+<text>ZAYIFÇA YUMRUKLUYORSUN, TORBA GIDIM OYNAMIYOR. ANİDEN SERT BİR YUMRUK SALLIYORSUN AMA ELİNİ ACITIYORSUN. EŞYALARIN LAZIM..</text>
+<option>
+<text>GERİ</text>
+<id>back_to_gym</id>
+<transition id="gym"></transition>
+</option>
+</PANEL>
+
+<PANEL id="punch_hard">
+<text>TORBAYI ÖYLE BİR YUMRUKLUYORSUN Kİ ÇAĞLAR BOYU GERİYE GİDİYOR.</text>
+<option>
+<text>GERİ</text>
+<id>back_to_gym</id>
+<transition id="gym"></transition>
+</option>
+</PANEL>
+
+<PANEL id="the_tv">
+<text>KARLI GÖRÜNTÜ VE CIZIRTILI BİR SESTEN BAŞKA BİR ŞEY YOK. ANTEN KIRILMIŞ GİBİ GÖRÜNÜYOR. ŞU AN BUNU TAMİR EDECEK İSTEĞE SAHİP DEĞİLSİN.</text>
+<option>
+<text>GERİ</text>
+<id>to_living_room</id>
+<transition id="living_room"></transition>
+</option>
+</PANEL>
+
+<PANEL id="found_keys">
+<text>ÇIKIŞ KAPISININ ANAHTARLARINI BULDUN!</text>
+<option>
+<text>GERİ</text>
+<id>to_living_room</id>
+<transition id="living_room"></transition>
+</option>
+<result type="change-variable" name="haskey" value="1"></result>
+</PANEL>
+
+<PANEL id="nothing">
+<text>BOŞ.</text>
+<option>
+<text>GERİ</text>
+<id>to_living_room</id>
+<transition id="living_room"></transition>
+</option>
+</PANEL>
+
+<PANEL id="out_lroom">
+<text>HİÇ ESMİYOR, GÜNEŞ GÖZ ALIYOR.</text>
+<option>
+<text>GERİ</text>
+<id>to_living_room</id>
+<transition id="living_room"></transition>
+</option>
+</PANEL>
+
+<PANEL id="exit_without_shoes">
+<text>AYAKKABILARINI GİYMEYİ UNUTTUN...</text>
+<option>
+<text>GERİ</text>
+<id>door_to_corridor</id>
+<transition id="corridor_first"><trcondition var-name="hashoes" var-target="0" var-type="EQUAL TO"></trcondition>
+</transition>
+<transition id="force_shoe_off"><trcondition var-name="hashoes" var-target="1" var-type="EQUAL TO"></trcondition>
+</transition>
+</option>
+</PANEL>
+
+<PANEL id="exit_with_shoes">
+<text>ÇIKIŞ KAPISINDASIN.</text>
+<option>
+<text>GERİ</text>
+<id>door_to_corridor</id>
+<transition id="corridor_first"><trcondition var-name="hashoes" var-target="0" var-type="EQUAL TO"></trcondition>
+</transition>
+<transition id="force_shoe_off"><trcondition var-name="hashoes" var-target="1" var-type="EQUAL TO"></trcondition>
+</transition>
+</option>
+<option>
+<text>DIŞARI ÇIK</text>
+<id>go_outside</id>
+<transition id="finish"></transition>
+</option>
+</PANEL>
+
+<PANEL id="finish">
+<text>TEBRİKLER! HCRF: YAZILI MACERA'YI TAMAMLADIN!</text>
+<option>
+<text>YENİDEN OYNA</text>
+<id>restart</id>
+<transition id="start"></transition>
+</option>
+</PANEL>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="./scripts/Constructors.js"></script>
+	<script src="./scripts/LoadFunctions.js"></script>
+	<script src="./scripts/AdventureLoader.js"></script>
+	<script src="./scripts/StyleManager.js"></script>
+	<link href="./style/colors_dark.css" rel="stylesheet" id="theme-link">
+	<link href="./style/style.css" rel="stylesheet">
+	<title> Text Adventure Player </title>
+</head>
+<body>
+	<div id="header">
+		<h3 onclick="BackToHome()">Text Adventure Player</h3>
+		<a href="https://github.com/muratrencber/html-text-adventure-player">GitHub Page</a>
+		<a id="mode-change-button" onclick="ChangeStyle()">Switch to Light Mode</a>
+		<a id="back-to-home-button" onclick="BackToHome()" style="display: none;">Back to Home</a>
+	</div>
+	<div id="in-game" style="display: none;">
+		<div class="text-container">
+			<h3 id="part_text" style="text-align: center;"></h3>
+		</div>
+		<div id="button_container"></div>
+	</div>
+	<div id="home">
+		<div id="adventure-loader">
+			<button onclick="LoadAdventure()">Choose File</button>
+			<h2>Load an adventure</h2>
+		</div>
+		<div id="existing-adventures">
+			<h2>Or select an existing one:</h2>
+			<div class="flex-break"></div>
+			<div id="existing-adventures-buttons">
+
+			</div>
+		</div>
+	</div>
+	<script src="./scripts/Player.js"></script>
+</body>
+</html>

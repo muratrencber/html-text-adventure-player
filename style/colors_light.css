@@ -1,0 +1,6 @@
+:root {
+    --main-color:white;
+    --secondary-color: black;
+    --shadow-color: rgba(0,0,0,0.3);
+    --container-color: lightgray;
+}

@@ -1,0 +1,171 @@
+body
+{
+    margin: 0;
+    padding: 0;
+    background-color: var(--main-color);
+    min-height: 100%;
+    height: 100%;
+}
+#header
+{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: var(--main-color);
+    filter: drop-shadow(0 0 0.75rem var(--shadow-color));
+    padding: 1em;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#header h3
+{
+    display: inline-block;
+    color: var(--secondary-color);
+    cursor: pointer;
+}
+
+#header a
+{
+    font-size: 1em;
+    padding: 1em;
+    border-radius: 0.4em;
+    margin-left: 1.5em;
+    border: 0.12em solid var(--secondary-color);
+    background-color: var(--main-color);
+    color: var(--secondary-color);
+    transition: 0.1s ease-in-out;
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+#header a:hover
+{
+    background-color: var(--secondary-color);
+    color: var(--main-color);
+}
+
+#adventure-loader
+{
+    margin-top: 7em;
+    margin-bottom: 7em;
+    display: flex;
+    justify-content: center;
+}
+
+#existing-adventures
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#existing-adventures h2
+{
+    color: var(--secondary-color);
+    font-size: 1.5em;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.flex-break
+{
+    flex-basis: 100%;
+    height: 0;
+}
+
+#existing-adventures-buttons
+{
+    border-radius: 0.4em;
+    border: none;
+    background-color: var(--container-color);
+    padding: 1em;
+    width: 60%;
+    min-height: 30em;
+}
+
+button
+{
+    font-size: 1.5em;
+    width: 20%;
+    padding: 1em;
+    border-radius: 0.4em;
+    border: 0.12em solid var(--secondary-color);
+    background-color: var(--main-color);
+    color: var(--secondary-color);
+    transition: 0.1s ease-in-out;
+    display: inline-block;
+    cursor: pointer;
+}
+
+button:hover
+{
+    background-color: var(--secondary-color);
+    color: var(--main-color);
+}
+
+#adventure-loader h2
+{
+    color: var(--secondary-color);
+    font-size: 2em;
+    font-family: Arial, Helvetica, sans-serif;
+    display: inline-block;
+    margin-left: 1em;
+}
+
+#existing-adventures-buttons button
+{
+    width: 100%;
+    margin-bottom: 0.4em;
+}
+
+#in-game
+{
+    height: 100%;
+}
+
+#in-game .text-container
+{
+    padding-top: 1em;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--secondary-color);
+    min-height: 40%;
+    height: 35vh;
+    width: 80vw;
+    margin: 2vh 0 2vh 10vw;
+    padding: 0.5em;
+    display: flex;
+    align-items: center;
+    font-size: 1.5em;
+    font-weight: 100;
+    display: block;
+    background-color: var(--container-color);
+    border-radius: 0.5em;
+}
+
+#in-game .text-container h3
+{
+    
+    font-weight: 100;
+}
+
+#button_container
+{
+    height: 40vh;
+    width: 80vw;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    margin: 0 0 0 10vw;
+    padding: 1em;
+    background-color: var(--container-color);
+    border-radius: 1em;
+}
+
+#button_container button
+{
+    margin-bottom: 1em;
+}
+
+#back-to-home-button
+{
+    float: right;
+}

@@ -1,0 +1,527 @@
+<var def="0">answeredphone</var>
+<var def="0">hashoes</var>
+<var def="0">haskey</var>
+<var def="0">hasgloves</var>
+
+<PANEL id="start">
+<text>HCRF: Text Adventure</text>
+<option>
+<text>START</text>
+<id>start_game_button</id>
+<transition id="waking_up"></transition>
+</option>
+<option>
+<text>CREDITS</text>
+<id>credits_button</id>
+<transition id="credits"></transition>
+</option>
+<result type="change-variable" name="answeredphone" value="0"></result>
+<result type="change-variable" name="hashoes" value="0"></result>
+<result type="change-variable" name="haskey" value="0"></result>
+<result type="change-variable" name="hasgloves" value="0"></result>
+</PANEL>
+
+<PANEL id="credits">
+<text>CREATED BY:
+MERİÇ BAĞLAYAN
+
+PORTED TO HTML BY:
+MURAT RENÇBER</text>
+<option>
+<text>BACK</text>
+<id>credits_back_button</id>
+<transition id="start"></transition>
+</option>
+</PANEL>
+
+<PANEL id="waking_up">
+<text>YOU WAKE UP AFTER HEARING THE AWFUL NOISE OF THE ALARM CLOCK. YOU CURSE TO THE OLD CLOCK AND CONSIDER DESTROYING IT ONCE AGAIN LIKE YOU DO EVERYDAY. BUT A NICE SONG STARTS PLAYING AT THE GRAMOPHONE. A NICE, JAZZY SONG THAT WIPES ALL THE NEGATIVE THOUGHTS AWAY.</text>
+<option>
+<text>LOOK OUT OF THE WINDOW</text>
+<id>look_out_waking</id>
+<transition id="out_bedroom"></transition>
+</option>
+<option>
+<text>GO NEAR THE GRAMOPHONE</text>
+<id>go_to_gramophone</id>
+<transition id="gramophone_bedroom"></transition>
+</option>
+<option>
+<text>EXIT THE BEDROOM</text>
+<id>exit_bedroom</id>
+<transition id="corridor_first"></transition>
+</option>
+</PANEL>
+
+<PANEL id="out_bedroom">
+<text>YOU SEE AN OLD MAN WALKING WITH SOME GROCERIES IN HIS HANDS. NOTHING INTERESTING.</text>
+<option>
+<text>GO BACK</text>
+<id>back_to_bedroom</id>
+<transition id="waking_up"></transition>
+</option>
+</PANEL>
+
+<PANEL id="gramophone_bedroom">
+<text>BEAUTIFUL MUSIC.</text>
+<option>
+<text>GO BACK</text>
+<id>back_to_bedroom</id>
+<transition id="waking_up"></transition>
+</option>
+</PANEL>
+
+<PANEL id="corridor_first">
+<text>YOU'RE AT THE CORRIDOR OF THE FIRST FLOOR. LIGHT RAYS COMING FROM THE WINDOW ARE SUFFICIENT TO ILLUMINATE THE WHOLE PLACE. THERE'S A CONSOLE THAT HAS SOME STUFF ON IT. YOU SEE A STAIRCASE THAT GOES UPSTAIRS. THERE'S ALSO THE EXIT DOOR RIGHT AHEAD OF YOU. AND THERE'S A SHOE DRAWER NEXT TO THE DOOR.</text>
+<option>
+<text>GO UPSTAIRS</text>
+<id>go_upstairs</id>
+<transition id="going_upstairs"></transition>
+</option>
+<option>
+<text>GO NEAR THE CONSOLE</text>
+<id>go_to_console</id>
+<transition id="console_phone_ringing"><trcondition var-name="answeredphone" var-target="0" var-type="EQUAL TO"></trcondition>
+</transition>
+<transition id="console_wout_phone"><trcondition var-name="answeredphone" var-target="1" var-type="EQUAL TO"></trcondition>
+</transition>
+</option>
+<option>
+<text>GO TO THE EXIT DOOR</text>
+<id>go_to_exit_door</id>
+<transition id="exit_door_without_keys"><trcondition var-name="haskey" var-target="0" var-type="EQUAL TO"></trcondition>
+</transition>
+<transition id="exit_without_shoes"><trcondition var-name="haskey" var-target="1" var-type="EQUAL TO"></trcondition>
+<trcondition var-name="hashoes" var-target="0" var-type="EQUAL TO"></trcondition>
+</transition>
+<transition id="exit_with_shoes"><trcondition var-name="haskey" var-target="1" var-type="EQUAL TO"></trcondition>
+<trcondition var-name="hashoes" var-target="1" var-type="EQUAL TO"></trcondition>
+</transition>
+</option>
+<option>
+<text>GO NEAR THE SHOE DRAWER</text>
+<id>go_to_shoe_drawer</id>
+<transition id="the_shoe_drawer"></transition>
+</option>
+</PANEL>
+
+<PANEL id="console_phone_ringing">
+<text>YOU CAN HEAR THE PHONE RING WITH A WEAK SOUND. YOU ALSO SEE A PHOTO AND AN UGLY FLOWER IN A POT.</text>
+<option>
+<text>LOOK AT THE PHOTO</text>
+<id>look_at_photo</id>
+<transition id="looked_at_photo"></transition>
+</option>
+<option>
+<text>CHECK THE FLOWER</text>
+<id>look_at_pot</id>
+<transition id="looked_at_pot"></transition>
+</option>
+<option>
+<text>ANSWER THE TELEPHONE</text>
+<id>answer_phone</id>
+<transition id="answered_telephone"></transition>
+</option>
+<option>
+<text>GO BACK</text>
+<id>back_to_first_corridor</id>
+<transition id="corridor_first"></transition>
+</option>
+</PANEL>
+
+<PANEL id="console_wout_phone">
+<text>YOU SEE A PHOTO AND AN UGLY FLOWER.</text>
+<option>
+<text>LOOK AT THE PHOTO</text>
+<id>look_at_photo</id>
+<transition id="looked_at_photo"></transition>
+</option>
+<option>
+<text>CHECK THE FLOWER</text>
+<id>look_at_pot</id>
+<transition id="looked_at_pot"></transition>
+</option>
+<option>
+<text>GO BACK</text>
+<id>back_to_first_corridor</id>
+<transition id="corridor_first"></transition>
+</option>
+</PANEL>
+
+<PANEL id="answered_telephone">
+<text>YOU COULDN'T MAKE IT IN TIME. AND SINCE THE PHONE IS AN ANCIENT ARTIFACT YOU INHERITED FROM YOUR GREAT GRANDMOTHER, YOU'RE NOT ABLE TO SEE WHO CALLED.</text>
+<option>
+<text>BACK</text>
+<id>back_to_console</id>
+<transition id="console_wout_phone"><trcondition var-name="answeredphone" var-target="1" var-type="EQUAL TO"></trcondition>
+</transition>
+<transition id="console_phone_ringing"><trcondition var-name="answeredphone" var-target="0" var-type="EQUAL TO"></trcondition>
+</transition>
+</option>
+<result type="change-variable" name="answeredphone" value="1"></result>
+</PANEL>
+
+<PANEL id="looked_at_pot">
+<text>THESE LOOKED GORGEOUS A FEW WEEKS AGO. TOO BAD YOU FORGOT TO WATER THEM.</text>
+<option>
+<text>BACK</text>
+<id>back_to_console</id>
+<transition id="console_wout_phone"><trcondition var-name="answeredphone" var-target="1" var-type="EQUAL TO"></trcondition>
+</transition>
+<transition id="console_phone_ringing"><trcondition var-name="answeredphone" var-target="0" var-type="EQUAL TO"></trcondition>
+</transition>
+</option>
+</PANEL>
+
+<PANEL id="looked_at_photo">
+<text>A PHOTO OF YOU AND YOUR FAMILY, TAKEN AT THE VACATION LAST YEAR. YOU SEE YOUR BROTHER WHO PASSED AWAY AND SHED A TEAR.</text>
+<option>
+<text>BACK</text>
+<id>back_to_console</id>
+<transition id="console_wout_phone"><trcondition var-name="answeredphone" var-target="1" var-type="EQUAL TO"></trcondition>
+</transition>
+<transition id="console_phone_ringing"><trcondition var-name="answeredphone" var-target="0" var-type="EQUAL TO"></trcondition>
+</transition>
+</option>
+</PANEL>
+
+<PANEL id="the_shoe_drawer">
+<text>YOU SEE A FEW PAIR OF SHOES THAT ALL BELONG TO YOU.</text>
+<option>
+<text>PUT ON A PAIR OF SHOES</text>
+<id>put_shoes_on</id>
+<transition id="shoes_put"></transition>
+<result type="change-variable" name="hashoes" value="1"></result>
+</option>
+<option>
+<text>BACK</text>
+<id>shoe_to_corridor</id>
+<transition id="corridor_first"></transition>
+</option>
+</PANEL>
+
+<PANEL id="shoes_put">
+<text>YOU PUT ON YOUR SHOES. WHAT DO YOU WANT TO DO NOW?</text>
+<option>
+<text>BACK TO THE CORRIDOR</text>
+<id>go_to_corridor_wshoes</id>
+<transition id="force_shoe_off"></transition>
+</option>
+<option>
+<text>GO TO THE EXIT DOOR</text>
+<id>go_to_exit_door</id>
+<transition id="exit_door_without_keys"><trcondition var-name="haskey" var-target="0" var-type="EQUAL TO"></trcondition>
+</transition>
+<transition id="exit_without_shoes"><trcondition var-name="haskey" var-target="1" var-type="EQUAL TO"></trcondition>
+<trcondition var-name="hashoes" var-target="0" var-type="EQUAL TO"></trcondition>
+</transition>
+<transition id="exit_with_shoes"><trcondition var-name="haskey" var-target="1" var-type="EQUAL TO"></trcondition>
+<trcondition var-name="hashoes" var-target="1" var-type="EQUAL TO"></trcondition>
+</transition>
+</option>
+<result type="change-variable" name="hashoes" value="1"></result>
+</PANEL>
+
+<PANEL id="force_shoe_off">
+<text>YOU CAN'T GO IN WITH YOUR SHOES ON.</text>
+<option>
+<text>PUT OFF YOUR SHOES</text>
+<id>put_off_shoes</id>
+<transition id="corridor_first"></transition>
+<result type="change-variable" name="hashoes" value="0"></result>
+</option>
+</PANEL>
+
+<PANEL id="exit_door_without_keys">
+<text>THE DOOR IS LOCKED. YOU REMEMBER THAT YOU LOCKED FROM INSIDE BUT YOU CAN'T QUITE REMEMBER WHERE YOU PUT THE KEY...</text>
+<option>
+<text>BACK</text>
+<id>door_to_corridor</id>
+<transition id="corridor_first"><trcondition var-name="hashoes" var-target="0" var-type="EQUAL TO"></trcondition>
+</transition>
+<transition id="force_shoe_off"><trcondition var-name="hashoes" var-target="1" var-type="EQUAL TO"></trcondition>
+</transition>
+</option>
+</PANEL>
+
+<PANEL id="going_upstairs">
+<text>YOU'RE GOING UPSTAIRS...</text>
+<option>
+<text></text>
+<id></id>
+<transition id="upstairs"></transition>
+</option>
+</PANEL>
+
+<PANEL id="upstairs">
+<text>YOU'RE AT THE SECOND FLOOR. THE LIVING ROOM IS TO YOUR LEFT, AND THE GYM IS TO YOUR RIGHT.</text>
+<option>
+<text>GO TO THE LIVING ROOM</text>
+<id>upstairs_to_livingroom</id>
+<transition id="living_room"></transition>
+</option>
+<option>
+<text>GO IN THE GYM</text>
+<id>upstairs_to_gym</id>
+<transition id="gym"></transition>
+</option>
+<option>
+<text>GO DOWNSTAIRS</text>
+<id>to_downstairs</id>
+<transition id="going_downstairs"></transition>
+</option>
+</PANEL>
+
+<PANEL id="going_downstairs">
+<text>YOU'RE GOING DOWNSTAIRS...</text>
+<option>
+<text></text>
+<id></id>
+<transition id="corridor_first"></transition>
+</option>
+</PANEL>
+
+<PANEL id="gym">
+<text>YOU GO INTO THE WORKOUT ROOM AND SEE A PUNCHING BAG AND A LIBRARY.</text>
+<option>
+<text>BACK</text>
+<id>back_to_upstairs</id>
+<transition id="upstairs"></transition>
+</option>
+<option>
+<text>GO NEAR THE PUNCHING BAG</text>
+<id>go_to_punching_bag</id>
+<transition id="ask_train"></transition>
+</option>
+<option>
+<text>CHECK THE LIBRARY</text>
+<id>check_library</id>
+<transition id="library_with_interesting"><trcondition var-name="hasgloves" var-target="0" var-type="EQUAL TO"></trcondition>
+</transition>
+<transition id="library"><trcondition var-name="hasgloves" var-target="1" var-type="EQUAL TO"></trcondition>
+</transition>
+</option>
+</PANEL>
+
+<PANEL id="living_room">
+<text>THERE'S A NICE LOOKING TV, A DRAWER AND A WINDOW.</text>
+<option>
+<text>BACK</text>
+<id>back_to_upstairs</id>
+<transition id="upstairs"></transition>
+</option>
+<option>
+<text>undefined</text>
+<id>turn_on_the_tv</id>
+<transition id="the_tv"></transition>
+</option>
+<option>
+<text>undefined</text>
+<id>check_the_drawer</id>
+<transition id="found_keys"><trcondition var-name="haskey" var-target="0" var-type="EQUAL TO"></trcondition>
+</transition>
+<transition id="nothing"><trcondition var-name="haskey" var-target="1" var-type="EQUAL TO"></trcondition>
+</transition>
+</option>
+<option>
+<text>undefined</text>
+<id>look_out_lroom</id>
+<transition id="out_lroom"></transition>
+</option>
+</PANEL>
+
+<PANEL id="library_with_interesting">
+<text>THERE ARE SOME BOOKS, A DRAWER AND SOMETHING INTERESTING...</text>
+<option>
+<text>LOOK INSIDE THE DRAWER</text>
+<id>look_inside_drawer</id>
+<transition id="inside_lib_drawer"></transition>
+</option>
+<option>
+<text>CHECK THE BOOKS</text>
+<id>check_books</id>
+<transition id="books_lib"></transition>
+</option>
+<option>
+<text>INSPECT THE INTERESTING THING</text>
+<id>inspect_thing</id>
+<transition id="found_gloves"></transition>
+</option>
+<option>
+<text>BACK</text>
+<id>back_to_gym</id>
+<transition id="gym"></transition>
+</option>
+</PANEL>
+
+<PANEL id="library">
+<text>THERE ARE SOME BOOKS AND A DRAWER.</text>
+<option>
+<text>LOOK INSIDE THE DRAWER</text>
+<id>look_inside_drawer</id>
+<transition id="inside_lib_drawer"></transition>
+</option>
+<option>
+<text>CHECK THE BOOKS</text>
+<id>check_books</id>
+<transition id="books_lib"></transition>
+</option>
+<option>
+<text>BACK</text>
+<id>back_to_gym</id>
+<transition id="gym"></transition>
+</option>
+</PANEL>
+
+<PANEL id="inside_lib_drawer">
+<text>YOU FIND SOME CABLES AND SOME OLD TECH GEAR. NOTHING INTERESTING.</text>
+<option>
+<text>BACK</text>
+<id>back_to_library</id>
+<transition id="library"><trcondition var-name="hasgloves" var-target="1" var-type="EQUAL TO"></trcondition>
+</transition>
+<transition id="library_with_interesting"><trcondition var-name="hasgloves" var-target="0" var-type="EQUAL TO"></trcondition>
+</transition>
+</option>
+</PANEL>
+
+<PANEL id="books_lib">
+<text>THERE ARE FEW BOOKS HERE. THEY DON'T SEEM INTERESTING AND YOU DON'T HAVE THE TIME TO READ ONE ANYWAY...</text>
+<option>
+<text>BACK</text>
+<id>back_to_library</id>
+<transition id="library"><trcondition var-name="hasgloves" var-target="1" var-type="EQUAL TO"></trcondition>
+</transition>
+<transition id="library_with_interesting"><trcondition var-name="hasgloves" var-target="0" var-type="EQUAL TO"></trcondition>
+</transition>
+</option>
+</PANEL>
+
+<PANEL id="found_gloves">
+<text>A GREAT PAIR OF SHINY GLOVES.</text>
+<option>
+<text>BACK</text>
+<id>back_to_library</id>
+<transition id="library"><trcondition var-name="hasgloves" var-target="1" var-type="EQUAL TO"></trcondition>
+</transition>
+<transition id="library_with_interesting"><trcondition var-name="hasgloves" var-target="0" var-type="EQUAL TO"></trcondition>
+</transition>
+</option>
+<option>
+<text>PUT THEM ON</text>
+<id>put_gloves</id>
+<transition id="library"></transition>
+<result type="change-variable" name="hasgloves" value="1"></result>
+</option>
+</PANEL>
+
+<PANEL id="ask_train">
+<text>DO YOU WANT TO TRAIN?</text>
+<option>
+<text>YES</text>
+<id>yes_train</id>
+<transition id="punch_weak"><trcondition var-name="hasgloves" var-target="0" var-type="EQUAL TO"></trcondition>
+</transition>
+<transition id="punch_hard"><trcondition var-name="hasgloves" var-target="1" var-type="EQUAL TO"></trcondition>
+</transition>
+</option>
+<option>
+<text>NO</text>
+<id>no_train</id>
+<transition id="gym"></transition>
+</option>
+</PANEL>
+
+<PANEL id="punch_weak">
+<text>YOU PUNCH IT WEAKLY AND THE BAG DOESN'T MOVE AN INCH. YOU MAKE A SUDDEN STRONG PUNCH BUT YOU HURT YOUR HAND. YOU NEED YOUR GEAR..</text>
+<option>
+<text>BACK</text>
+<id>back_to_gym</id>
+<transition id="gym"></transition>
+</option>
+</PANEL>
+
+<PANEL id="punch_hard">
+<text>YOU DUMPSTER THE PUNCHING BAG BACK TO THE STONE AGE.</text>
+<option>
+<text>BACK</text>
+<id>back_to_gym</id>
+<transition id="gym"></transition>
+</option>
+</PANEL>
+
+<PANEL id="the_tv">
+<text>THERE'S NOTHING BUT BROKEN IMAGE AND STATIC NOISE. THE ANTENNA SEEMS TO BE BROKEN. YOU DON'T HAVE THE MOTIVATION TO REPAIR IT NOW.</text>
+<option>
+<text>BACK</text>
+<id>to_living_room</id>
+<transition id="living_room"></transition>
+</option>
+</PANEL>
+
+<PANEL id="found_keys">
+<text>YOU FIND THE KEY TO THE EXIT DOOR!</text>
+<option>
+<text>BACK</text>
+<id>to_living_room</id>
+<transition id="living_room"></transition>
+</option>
+<result type="change-variable" name="haskey" value="1"></result>
+</PANEL>
+
+<PANEL id="nothing">
+<text>IT'S EMPTY.</text>
+<option>
+<text>BACK</text>
+<id>to_living_room</id>
+<transition id="living_room"></transition>
+</option>
+</PANEL>
+
+<PANEL id="out_lroom">
+<text>THERE IS NO WIND AND THE SUN IS BLINDINGLY BRIGHT.</text>
+<option>
+<text>BACK</text>
+<id>to_living_room</id>
+<transition id="living_room"></transition>
+</option>
+</PANEL>
+
+<PANEL id="exit_without_shoes">
+<text>YOU FORGOT TO WEAR YOUR SHOES...</text>
+<option>
+<text>BACK</text>
+<id>door_to_corridor</id>
+<transition id="corridor_first"><trcondition var-name="hashoes" var-target="0" var-type="EQUAL TO"></trcondition>
+</transition>
+<transition id="force_shoe_off"><trcondition var-name="hashoes" var-target="1" var-type="EQUAL TO"></trcondition>
+</transition>
+</option>
+</PANEL>
+
+<PANEL id="exit_with_shoes">
+<text>YOU ARE AT THE EXIT DOOR.</text>
+<option>
+<text>BACK</text>
+<id>door_to_corridor</id>
+<transition id="corridor_first"><trcondition var-name="hashoes" var-target="0" var-type="EQUAL TO"></trcondition>
+</transition>
+<transition id="force_shoe_off"><trcondition var-name="hashoes" var-target="1" var-type="EQUAL TO"></trcondition>
+</transition>
+</option>
+<option>
+<text>GO OUTSIDE</text>
+<id>go_outside</id>
+<transition id="finish"></transition>
+</option>
+</PANEL>
+
+<PANEL id="finish">
+<text>CONGRATULATIONS! YOU BEAT THE HCRF: TEXT ADVENTURE!</text>
+<option>
+<text>RESTART</text>
+<id>restart</id>
+<transition id="start"></transition>
+</option>
+</PANEL>
+
