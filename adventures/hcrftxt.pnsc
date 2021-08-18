@@ -311,12 +311,12 @@ MURAT RENÇBER</text>
 <transition id="upstairs"></transition>
 </option>
 <option>
-<text>undefined</text>
+<text>TURN ON THE TV</text>
 <id>turn_on_the_tv</id>
 <transition id="the_tv"></transition>
 </option>
 <option>
-<text>undefined</text>
+<text>CHECK THE DRAWER</text>
 <id>check_the_drawer</id>
 <transition id="found_keys"><trcondition var-name="haskey" var-target="0" var-type="EQUAL TO"></trcondition>
 </transition>
@@ -324,7 +324,7 @@ MURAT RENÇBER</text>
 </transition>
 </option>
 <option>
-<text>undefined</text>
+<text>LOOK OUT OF THE WINDOW</text>
 <id>look_out_lroom</id>
 <transition id="out_lroom"></transition>
 </option>
