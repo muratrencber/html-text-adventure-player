@@ -76,7 +76,8 @@ function SetExistingAdventuresList()
     for(let i = 0; i < adventures.length; i++)
     {
         let btn = document.createElement("button");
-        btn.innerHTML = decodeURIComponent(escape(adventures[i].name));
+        //btn.innerHTML = decodeURIComponent(escape(adventures[i].name));
+        btn.innerHTML = adventures[i].name;
         btn.setAttribute("onclick", "LoadExistingAdventure(\""+adventures[i].fileName+"\")");
         container.appendChild(btn);
     }

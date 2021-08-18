@@ -19,7 +19,6 @@ function LoadPS(text)
         partRemainder = partRemainder.substring(partRemainder.indexOf(">"));
         let opResults = LoadOptions(partRemainder);
         partRemainder = opResults[0];
-        console.log("AFTEROPTIONS:"+partRemainder);
         let resResults = LoadResults(partRemainder);
         partRemainder = resResults[0];
         let options = opResults[1];

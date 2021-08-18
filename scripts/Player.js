@@ -43,7 +43,6 @@ function DrawPanel(id)
     if(transitionOnly)
     {
         setTimeout(function() {
-            console.log(panel);
             for(let i = 0; i < panel.options.length; i++)
             {
                 let opt = panel.options[i];
